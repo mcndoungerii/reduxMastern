@@ -6,11 +6,9 @@ import {fetchPosts} from '../actions/postActions';
 
 
 class Posts extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            posts: []
-        }
+    
+    componentDidMount(){
+        this.props.fetchPosts();
     }
     
     render() {
