@@ -7,6 +7,11 @@ class PostForm extends Component {
             title: '',
             body:''
         }
+
+        this.onChange = this.onChange.bind(this);
+    }
+    onChange(e){
+        this.setState({[e.target.name]: e.target.value})
     }
     render() {
         return (
@@ -16,13 +21,13 @@ class PostForm extends Component {
                     <div>
                         <label>Title</label>
                         <br/>
-                        <input type="text" name="title" value={this.state.title}></input>
+                        <input type="text" name="title" onChange={this.onChange} value={this.state.title}></input>
                     </div>
                     <br/>
                     <div>
                         <label>Body</label>
                         <br/>
-                        <textarea name="body" value={this.state.body}></textarea>
+                        <textarea name="body" onChange={this.onChange} value={this.state.body}></textarea>
                     </div>
                     <br/>
                     <button type="submit">Submit</button>
