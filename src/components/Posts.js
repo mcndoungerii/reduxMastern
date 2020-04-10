@@ -13,7 +13,7 @@ class Posts extends Component {
     
     render() {
         // constructing a function that will iterate on each obj in post array ,then construct a JSX template
-        const postItems = this.state.posts.map(post => (
+        const postItems = this.props.posts.map(post => (
             <div key={post.id}>
                 <h3>{post.title}</h3>
                 <p>{post.description}</p>
@@ -27,6 +27,11 @@ class Posts extends Component {
             </div>
         )
     }
+
 }
 
-export default connect(null,{ fetchPosts })(Posts);
+const mapStateToProps = state => ({
+    posts: state.posts.items
+});
+
+export default connect(mapStateToProps,{ fetchPosts })(Posts);
