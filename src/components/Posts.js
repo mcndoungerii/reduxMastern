@@ -7,11 +7,7 @@ class Posts extends Component {
             posts: []
         }
     }
-    componentDidMount(){
-        fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(res => res.json())
-        .then(data => this.setState({posts: data}))
-    }
+    
     render() {
         // constructing a function that will iterate on each obj in post array ,then construct a JSX template
         const postItems = this.state.posts.map(post => (
