@@ -11,6 +11,14 @@ class Posts extends Component {
     componentDidMount(){
         this.props.fetchPosts();
     }
+
+    UNSAFE_componentWillReceiveProps(nextProps){
+        if(nextProps.newPost){
+            this.props.posts.unshift(nextProps.newPost)
+        }
+    }
+
+   
     
     render() {
         // constructing a function that will iterate on each obj in post array ,then construct a JSX template
@@ -32,11 +40,13 @@ class Posts extends Component {
 
 Posts.propTypes = {
     fetchPosts: PropTypes.func.isRequired,
-    posts: PropTypes.array.isRequired
+    posts: PropTypes.array.isRequired,
+    newPost: PropTypes.object
 }; 
 
 const mapStateToProps = state => ({
-    posts: state.posts.items
+    posts: state.posts.items,
+    newPost: state.posts.item
 });
 
 export default connect(mapStateToProps,{ fetchPosts })(Posts);
